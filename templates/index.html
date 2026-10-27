@@ -1,0 +1,1430 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080d13">
+  <meta name="description" content="Nexora AI — an intelligent workspace for data analysis, interactive dashboards, strategic decisions, and business insights.">
+
+  <title>Nexora AI — Intelligence Workspace</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+  <!-- =====================================================
+       AUTHENTICATION SCREEN
+       ===================================================== -->
+
+  <section id="authScreen" class="auth-screen">
+
+    <!-- Brand and introduction -->
+    <div class="auth-art">
+
+      <div class="auth-orb orb-one"></div>
+      <div class="auth-orb orb-two"></div>
+
+      <a class="brand brand-large" href="#" aria-label="Nexora AI home">
+        <span class="brand-mark">N</span>
+        <span>NEXORA</span>
+        <span class="brand-ai">AI</span>
+      </a>
+
+      <div class="auth-art-copy">
+
+        <div class="eyebrow">
+          <span class="live-dot"></span>
+          INTELLIGENCE IN MOTION
+        </div>
+
+        <h1>
+          Make data<br>
+          your <span>advantage.</span>
+        </h1>
+
+        <p class="auth-lede">
+          Turn complex information into clarity, confident decisions,
+          and measurable growth. Bring your data, strategy, and
+          intelligence together in one workspace.
+        </p>
+
+        <div class="auth-feature-grid">
+
+          <article class="auth-feature">
+            <span class="feature-symbol">▦</span>
+            <div>
+              <strong>Visual analytics</strong>
+              <small>Discover patterns through interactive dashboards.</small>
+            </div>
+          </article>
+
+          <article class="auth-feature">
+            <span class="feature-symbol">◈</span>
+            <div>
+              <strong>Decision intelligence</strong>
+              <small>Evaluate scenarios, risks, and strategic trade-offs.</small>
+            </div>
+          </article>
+
+          <article class="auth-feature">
+            <span class="feature-symbol">✳</span>
+            <div>
+              <strong>AI-powered insights</strong>
+              <small>Turn complex questions into actionable analysis.</small>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="auth-proofline">
+          <span class="proof-avatars" aria-hidden="true">
+            <i>N</i>
+            <i>A</i>
+            <i>I</i>
+          </span>
+          <span>One workspace. Clearer insights. Better decisions.</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Sign-in and registration -->
+    <div class="auth-panel">
+
+      <div class="auth-panel-top">
+        <span>YOUR INTELLIGENCE WORKSPACE</span>
+
+        <span class="status-pill">
+          <span class="live-dot"></span>
+          Secure access
+        </span>
+      </div>
+
+      <div class="auth-card-body">
+
+        <form id="authForm" class="auth-form">
+
+          <div class="eyebrow">WELCOME TO NEXORA</div>
+
+          <h2 id="authTitle">Welcome back.</h2>
+
+          <p id="authSubtitle" class="muted">
+            Sign in to continue to your workspace.
+          </p>
+
+          <!-- Registration name: shown when registration is enabled -->
+          <div id="nameField" class="field hidden">
+            <label for="authName">Full name</label>
+            <input
+              id="authName"
+              name="name"
+              type="text"
+              autocomplete="name"
+              placeholder="Enter your full name"
+            >
+          </div>
+
+          <div class="field">
+            <label for="authEmail">Work email</label>
+
+            <input
+              id="authEmail"
+              name="email"
+              type="email"
+              autocomplete="email"
+              placeholder="you@company.com"
+              required
+            >
+          </div>
+
+          <div class="field">
+
+            <div class="field-label-row">
+              <label for="authPassword">Password</label>
+              <span class="field-hint">12+ characters</span>
+            </div>
+
+            <div class="password-wrap">
+              <input
+                id="authPassword"
+                name="password"
+                type="password"
+                autocomplete="current-password"
+                minlength="12"
+                placeholder="Enter your password"
+                required
+              >
+
+              <button
+                id="passwordToggle"
+                class="password-toggle"
+                type="button"
+                aria-label="Show password"
+                aria-pressed="false"
+              >
+                Show
+              </button>
+            </div>
+
+            <p
+              id="passwordStrength"
+              class="password-strength hidden"
+              aria-live="polite"
+            ></p>
+
+          </div>
+
+          <p
+            id="authError"
+            class="error-text"
+            role="status"
+            aria-live="polite"
+          ></p>
+
+          <div class="auth-btn-wrap">
+            <button
+              id="authSubmit"
+              class="btn btn-primary btn-wide"
+              type="submit"
+            >
+              <span id="authSubmitText">Sign in</span>
+              <span aria-hidden="true">→</span>
+            </button>
+          </div>
+
+          <div class="auth-form-note">
+            <span class="note-lock" aria-hidden="true">◇</span>
+            <span>
+              Access your workspace to explore your data, generate
+              reports, and build strategic insights.
+            </span>
+          </div>
+
+          <p class="auth-switch">
+            <span id="authSwitchText">New to Nexora?</span>
+
+            <button id="authSwitch" type="button">
+              Create account
+            </button>
+          </p>
+
+        </form>
+
+      </div>
+
+      <footer class="auth-footer">
+        <span>© <span id="authYear"></span> Nexora AI</span>
+        <span>Intelligence in motion.</span>
+      </footer>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       APPLICATION SHELL
+       ===================================================== -->
+
+  <div id="appShell" class="app-shell hidden">
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar">
+
+      <a class="brand" href="#" data-view="overview" aria-label="Nexora AI overview">
+        <span class="brand-mark">N</span>
+        <span>NEXORA</span>
+        <span class="brand-ai">AI</span>
+      </a>
+
+      <div class="workspace-chip">
+        <div class="workspace-avatar">N</div>
+
+        <div class="workspace-chip-info">
+          <strong>Decision Workspace</strong>
+          <small>Intelligence environment</small>
+        </div>
+      </div>
+
+      <div class="nav-label">WORKSPACE</div>
+
+      <nav class="main-nav" aria-label="Main navigation">
+
+        <button class="nav-item active" data-view="overview" type="button">
+          <span class="nav-icon">◫</span>
+          <span>Overview</span>
+          <span class="nav-arrow">↗</span>
+        </button>
+
+        <button class="nav-item" data-view="generator" type="button">
+          <span class="nav-icon">▦</span>
+          <span>Dashboard Studio</span>
+          <span class="nav-tag">6 CHARTS</span>
+        </button>
+
+        <button class="nav-item" data-view="decision" type="button">
+          <span class="nav-icon">◈</span>
+          <span>Decision Intelligence</span>
+          <span class="nav-tag">NEW</span>
+        </button>
+
+        <button class="nav-item" data-view="copilot" type="button">
+          <span class="nav-icon">✳</span>
+          <span>AI Copilot</span>
+        </button>
+
+        <button class="nav-item" data-view="data" type="button">
+          <span class="nav-icon">▤</span>
+          <span>Data Analyst Pro</span>
+        </button>
+
+        <button class="nav-item" data-view="history" type="button">
+          <span class="nav-icon">◷</span>
+          <span>Activity History</span>
+        </button>
+
+      </nav>
+
+      <div class="sidebar-bottom">
+
+        <div class="profile">
+          <div id="avatar" class="profile-avatar">N</div>
+
+          <div class="profile-info">
+            <strong id="profileName">User Account</strong>
+            <small id="profileEmail">user@company.com</small>
+          </div>
+
+          <button
+            id="logoutBtn"
+            class="icon-btn logout-icon"
+            type="button"
+            title="Sign out"
+            aria-label="Sign out"
+          >⇥</button>
+        </div>
+
+      </div>
+
+    </aside>
+
+    <div id="sidebarBackdrop" class="sidebar-backdrop"></div>
+
+    <!-- Main application -->
+    <main class="main-area">
+
+      <header class="topbar">
+
+        <div class="topbar-left">
+
+          <button
+            id="menuToggle"
+            class="icon-btn menu-toggle"
+            type="button"
+            aria-label="Toggle navigation"
+            aria-expanded="false"
+            aria-controls="sidebar"
+          >☰</button>
+
+          <div class="breadcrumb">
+            Workspace
+            <span>/</span>
+            <strong id="breadcrumbCurrent">Overview</strong>
+          </div>
+
+        </div>
+
+        <div class="topbar-right">
+          <span class="topbar-status">
+            <span class="live-dot"></span>
+            Workspace active
+          </span>
+
+          <button id="topLogoutBtn" class="btn btn-quiet" type="button">
+            Sign out ↗
+          </button>
+        </div>
+
+      </header>
+
+
+      <div class="page-container">
+
+        <!-- =================================================
+             OVERVIEW
+             ================================================= -->
+
+        <section id="view-overview" class="page-view">
+
+          <div class="page-heading">
+
+            <div>
+              <div class="eyebrow">
+                <span class="live-dot"></span>
+                COMMAND CENTER
+              </div>
+
+              <h1>
+                See the <span class="text-gradient">bigger picture.</span>
+              </h1>
+
+              <p class="muted">
+                Your central workspace for data analytics, strategic
+                decisions, AI assistance, and business intelligence.
+              </p>
+            </div>
+
+            <button
+              class="btn btn-primary"
+              data-view="generator"
+              type="button"
+            >
+              Generate dashboard <span>→</span>
+            </button>
+
+          </div>
+
+
+          <!-- Welcome banner -->
+          <section class="welcome-banner">
+
+            <div class="welcome-copy">
+
+              <div class="eyebrow">NEXORA INTELLIGENCE</div>
+
+              <h2>
+                Welcome back, <span id="welcomeName">Member</span>.
+              </h2>
+
+              <p>
+                Transform your datasets into meaningful visualizations,
+                discover data-quality issues, and explore strategic
+                decisions from one intelligent workspace.
+              </p>
+
+              <div class="welcome-actions">
+                <button class="btn btn-light" data-view="data" type="button">
+                  Analyze data <span>→</span>
+                </button>
+
+                <button class="btn btn-outline-light" data-view="decision" type="button">
+                  Explore decisions
+                </button>
+              </div>
+
+            </div>
+
+            <div class="welcome-decoration" aria-hidden="true">
+              <div class="decoration-ring ring-one"></div>
+              <div class="decoration-ring ring-two"></div>
+              <div class="decoration-core">N</div>
+            </div>
+
+          </section>
+
+
+          <!-- Workspace metrics -->
+          <div class="section-heading">
+            <div>
+              <h2>Workspace snapshot</h2>
+              <p class="muted">
+                Your current workspace activity at a glance.
+              </p>
+            </div>
+
+            <span class="subtle-label">WORKSPACE METRICS</span>
+          </div>
+
+          <div class="stats-grid">
+
+            <article class="stat-card">
+              <div class="stat-top">
+                <span class="stat-icon icon-teal">▤</span>
+                <span class="stat-kicker">DATA</span>
+              </div>
+
+              <div id="statDatasets" class="stat-value">0</div>
+              <div class="stat-label">Datasets uploaded</div>
+              <div class="stat-footnote">Files analyzed in this workspace</div>
+            </article>
+
+            <article class="stat-card">
+              <div class="stat-top">
+                <span class="stat-icon icon-violet">◈</span>
+                <span class="stat-kicker">DECISIONS</span>
+              </div>
+
+              <div id="statChats" class="stat-value">0</div>
+              <div class="stat-label">Decision models</div>
+              <div class="stat-footnote">Strategic evaluations completed</div>
+            </article>
+
+            <article class="stat-card">
+              <div class="stat-top">
+                <span class="stat-icon icon-blue">▦</span>
+                <span class="stat-kicker">REPORTS</span>
+              </div>
+
+              <div id="statActivity" class="stat-value">0</div>
+              <div class="stat-label">Dashboards generated</div>
+              <div class="stat-footnote">Visual reports created</div>
+            </article>
+
+          </div>
+
+
+          <!-- Workspace actions -->
+          <div class="section-heading">
+            <div>
+              <h2>Explore your workspace</h2>
+              <p class="muted">
+                Choose a tool based on what you want to accomplish.
+              </p>
+            </div>
+          </div>
+
+          <div class="content-grid overview-content">
+
+            <article class="panel">
+
+              <div class="panel-heading">
+                <div>
+                  <h3>Quick actions</h3>
+                  <p class="muted">Jump straight into a task.</p>
+                </div>
+
+                <span class="panel-heading-mark">↗</span>
+              </div>
+
+              <div class="action-list">
+
+                <button class="action-row" data-view="generator" type="button">
+                  <span class="action-icon teal-bg">▦</span>
+                  <span>
+                    <strong>Dashboard Studio</strong>
+                    <small>Create visualizations, KPIs, and reports from your dataset.</small>
+                  </span>
+                  <span class="row-arrow">→</span>
+                </button>
+
+                <button class="action-row" data-view="decision" type="button">
+                  <span class="action-icon violet-bg">◈</span>
+                  <span>
+                    <strong>Decision Intelligence</strong>
+                    <small>Compare strategic scenarios, risk, and possible outcomes.</small>
+                  </span>
+                  <span class="row-arrow">→</span>
+                </button>
+
+                <button class="action-row" data-view="data" type="button">
+                  <span class="action-icon blue-bg">▤</span>
+                  <span>
+                    <strong>Data Analyst Pro</strong>
+                    <small>Audit missing values, duplicates, and data quality.</small>
+                  </span>
+                  <span class="row-arrow">→</span>
+                </button>
+
+                <button class="action-row" data-view="copilot" type="button">
+                  <span class="action-icon teal-bg">✳</span>
+                  <span>
+                    <strong>AI Copilot</strong>
+                    <small>Ask questions and explore business insights.</small>
+                  </span>
+                  <span class="row-arrow">→</span>
+                </button>
+
+              </div>
+
+            </article>
+
+
+            <article class="panel">
+
+              <div class="panel-heading">
+                <div>
+                  <h3>Your analysis workflow</h3>
+                  <p class="muted">A simple path from raw data to decisions.</p>
+                </div>
+
+                <span class="panel-heading-mark">◎</span>
+              </div>
+
+              <div class="workflow-steps">
+
+                <div class="workflow-step">
+                  <span class="workflow-number">01</span>
+                  <div>
+                    <strong>Upload your dataset</strong>
+                    <p>Start with a supported CSV or XLSX file.</p>
+                  </div>
+                </div>
+
+                <div class="workflow-step">
+                  <span class="workflow-number">02</span>
+                  <div>
+                    <strong>Understand your data</strong>
+                    <p>Review quality indicators, patterns, and key metrics.</p>
+                  </div>
+                </div>
+
+                <div class="workflow-step">
+                  <span class="workflow-number">03</span>
+                  <div>
+                    <strong>Generate visual insights</strong>
+                    <p>Build a dashboard and explore the charts.</p>
+                  </div>
+                </div>
+
+                <div class="workflow-step">
+                  <span class="workflow-number">04</span>
+                  <div>
+                    <strong>Make informed decisions</strong>
+                    <p>Evaluate scenarios and export useful findings.</p>
+                  </div>
+                </div>
+
+              </div>
+
+              <button
+                class="btn btn-secondary btn-wide"
+                data-view="data"
+                type="button"
+              >
+                Start data analysis <span>→</span>
+              </button>
+
+            </article>
+
+          </div>
+
+        </section>
+
+
+        <!-- =================================================
+             DASHBOARD STUDIO
+             ================================================= -->
+
+        <section id="view-generator" class="page-view hidden">
+
+          <div class="page-heading">
+            <div>
+              <div class="eyebrow">
+                <span class="live-dot"></span>
+                VISUAL ANALYTICS
+              </div>
+
+              <h1>
+                Dashboard <span class="text-gradient">Studio.</span>
+              </h1>
+
+              <p class="muted">
+                Turn structured data into interactive charts,
+                performance indicators, and an exportable executive report.
+              </p>
+            </div>
+          </div>
+
+
+          <div class="generator-layout">
+
+            <!-- Configuration -->
+            <article class="panel generator-config">
+
+              <div class="panel-heading">
+                <div>
+                  <h3>Dashboard configuration</h3>
+                  <p class="muted">Configure your analysis.</p>
+                </div>
+                <span class="panel-heading-mark">⚙</span>
+              </div>
+
+              <form id="generatorForm">
+
+                <div id="generatorDrop" class="drop-zone">
+
+                  <input
+                    id="generatorFile"
+                    type="file"
+                    accept=".csv,.xlsx"
+                    aria-label="Upload a CSV or XLSX dataset"
+                  >
+
+                  <span class="drop-icon">↑</span>
+                  <strong id="generatorFileName">Choose a dataset</strong>
+                  <small>CSV or XLSX · Maximum 25 MB</small>
+                  <span class="drop-helper">Browse files to get started</span>
+
+                </div>
+
+                <div class="field">
+                  <label for="dash-type">Dashboard focus</label>
+                  <select id="dash-type">
+                    <option value="executive">Executive overview</option>
+                    <option value="sales">Sales and revenue</option>
+                    <option value="operations">Operations</option>
+                    <option value="finance">Finance</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <label for="dash-title">Dashboard name</label>
+                  <input
+                    id="dash-title"
+                    type="text"
+                    value="Executive Performance Dashboard"
+                    placeholder="Enter a dashboard title"
+                  >
+                </div>
+
+                <div class="field">
+                  <label for="dash-goal">Analysis objective</label>
+                  <textarea
+                    id="dash-goal"
+                    rows="3"
+                    placeholder="What would you like to understand from your data?"
+                  ></textarea>
+                </div>
+
+                <p class="form-footnote">
+                  For meaningful results, choose a dataset with clear
+                  column names and numeric or categorical values.
+                </p>
+
+                <button
+                  id="generate-dashboard-btn"
+                  class="btn btn-primary btn-wide"
+                  type="submit"
+                >
+                  Generate dashboard <span>→</span>
+                </button>
+                <p id="generatorError" class="error-text" role="status" aria-live="polite"></p>
+
+              </form>
+
+            </article>
+
+
+            <!-- Dashboard results -->
+            <div class="generator-preview-column">
+
+              <div class="preview-topline">
+                <div>
+                  <h3>Dashboard canvas</h3>
+                  <p class="muted">Your generated results will appear here.</p>
+                </div>
+
+                <button
+                  id="generateReportBtn"
+                  class="btn btn-secondary hidden"
+                  type="button"
+                >
+                  Export executive report ↓
+                </button>
+              </div>
+
+
+              <div id="dashboardEmpty" class="dashboard-empty">
+
+                <div class="empty-illustration" aria-hidden="true">
+                  <span>▦</span>
+                  <i></i>
+                  <i></i>
+                  <i></i>
+                </div>
+
+                <h3>Your dashboard starts here</h3>
+
+                <p>
+                  Upload your dataset and generate visual analytics,
+                  key performance indicators, and computed insights.
+                </p>
+
+                <div class="empty-tags">
+                  <span>Interactive charts</span>
+                  <span>Performance metrics</span>
+                  <span>Data insights</span>
+                  <span>Report export</span>
+                </div>
+
+              </div>
+
+
+              <div id="dashboardOutput" class="dashboard-output hidden">
+
+                <div class="dashboard-titlebar">
+                  <div>
+                    <div class="eyebrow">GENERATED ANALYSIS</div>
+                    <h2 id="dashboardResultTitle">Executive overview</h2>
+                    <p id="dashboardResultMeta" class="muted"></p>
+                  </div>
+                </div>
+
+                <div id="summary-info" class="summary-box"></div>
+
+                <div id="dashboardKpis" class="dashboard-kpis"></div>
+
+                <div
+                  id="charts-grid"
+                  class="chart-grid"
+                  aria-live="polite"
+                ></div>
+
+                <article class="panel insights-panel">
+
+                  <div class="panel-heading">
+                    <div>
+                      <h3>Computed insights</h3>
+                      <p class="muted">Important findings from your dataset.</p>
+                    </div>
+                    <span class="panel-heading-mark">✳</span>
+                  </div>
+
+                  <div id="dashboardInsights" class="insight-list"></div>
+
+                </article>
+
+                <article class="panel insights-panel">
+                  <div class="panel-heading"><div><h3>Recommended next steps</h3><p class="muted">Practical checks before acting on the findings.</p></div></div>
+                  <div id="dashboardRecommendations" class="insight-list"></div>
+                </article>
+                <article class="panel insights-panel">
+                  <div class="panel-heading"><div><h3>Dataset preview</h3><p id="previewCaption" class="muted">Sample of uploaded records.</p></div></div>
+                  <div class="table-wrap"><table id="previewTable" class="data-table"><thead></thead><tbody></tbody></table></div>
+                </article>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- =================================================
+             DECISION INTELLIGENCE
+             ================================================= -->
+
+        <section id="view-decision" class="page-view hidden">
+
+          <div class="page-heading">
+            <div>
+              <div class="eyebrow">
+                <span class="live-dot"></span>
+                STRATEGIC ANALYSIS
+              </div>
+
+              <h1>
+                Decision <span class="text-gradient">Intelligence.</span>
+              </h1>
+
+              <p class="muted">
+                Evaluate strategic alternatives, compare scenarios,
+                understand risk, and organize a practical action plan.
+              </p>
+            </div>
+          </div>
+
+
+          <div class="generator-layout">
+
+            <article class="panel generator-config">
+
+              <div class="panel-heading">
+                <div>
+                  <h3>Decision parameters</h3>
+                  <p class="muted">Define the decision to evaluate.</p>
+                </div>
+                <span class="panel-heading-mark">◈</span>
+              </div>
+
+              <form id="decisionForm">
+
+                <div class="field">
+                  <label for="decisionTopic">Decision objective</label>
+
+                  <textarea
+                    id="decisionTopic"
+                    rows="4"
+                    placeholder="e.g. Expand into a new market or invest in technology?"
+                    required
+                  ></textarea>
+                </div>
+
+                <div class="field">
+                  <label for="riskTolerance">Risk tolerance</label>
+
+                  <select id="riskTolerance">
+                    <option value="conservative">Conservative</option>
+                    <option value="moderate" selected>Moderate</option>
+                    <option value="aggressive">Aggressive</option>
+                  </select>
+                </div>
+
+                <p class="form-footnote">
+                  Use the risk setting to align the evaluation with
+                  your preferred approach to uncertainty.
+                </p>
+
+                <button
+                  id="evaluateDecisionBtn"
+                  class="btn btn-primary btn-wide"
+                  type="submit"
+                >
+                  Evaluate scenarios <span>→</span>
+                </button>
+
+              </form>
+
+            </article>
+
+
+            <div class="generator-preview-column">
+
+              <div id="decisionEmpty" class="dashboard-empty">
+
+                <div class="empty-illustration decision-illustration" aria-hidden="true">
+                  <span>◈</span>
+                </div>
+
+                <h3>Explore your next decision</h3>
+
+                <p>
+                  Describe your objective and run an evaluation
+                  to view the generated scenario matrix and action plan.
+                </p>
+
+                <div class="empty-tags">
+                  <span>Scenario comparison</span>
+                  <span>Risk assessment</span>
+                  <span>Action planning</span>
+                </div>
+
+              </div>
+
+
+              <div id="decisionResults" class="hidden">
+
+                <div class="panel-heading">
+                  <div>
+                    <div class="eyebrow">EVALUATION RESULTS</div>
+                    <h2 id="decisionResultTitle">Decision matrix</h2>
+                    <p class="muted">
+                      Review the generated alternatives and their trade-offs.
+                    </p>
+                  </div>
+                </div>
+
+                <div id="scenariosGrid" class="content-grid scenarios-grid"></div>
+
+                <article class="panel insights-panel">
+
+                  <div class="panel-heading">
+                    <div>
+                      <h3>Recommended action plan</h3>
+                      <p class="muted">Next steps from the evaluation.</p>
+                    </div>
+                    <span class="panel-heading-mark">↗</span>
+                  </div>
+
+                  <div id="decisionActionItems" class="insight-list"></div>
+
+                </article>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- =================================================
+             DATA ANALYST PRO
+             ================================================= -->
+
+        <section id="view-data" class="page-view hidden">
+
+          <div class="page-heading">
+            <div>
+              <div class="eyebrow">
+                <span class="live-dot"></span>
+                DATA QUALITY INTELLIGENCE
+              </div>
+
+              <h1>
+                Data <span class="text-gradient">Analyst Pro.</span>
+              </h1>
+
+              <p class="muted">
+                Audit data quality, identify missing values and duplicates,
+                and review recommendations for improving your dataset.
+              </p>
+            </div>
+          </div>
+
+
+          <article class="panel upload-panel">
+
+            <div class="panel-heading">
+              <div>
+                <h3>Upload your dataset</h3>
+                <p class="muted">
+                  Select a CSV or XLSX file to begin the data audit.
+                </p>
+              </div>
+              <span class="panel-heading-mark">↑</span>
+            </div>
+
+            <form id="upload-form" class="upload-form">
+
+              <div class="drop-zone">
+
+                <input
+                  id="file-input"
+                  type="file"
+                  accept=".csv,.xlsx"
+                  aria-label="Select a dataset for analysis"
+                >
+
+                <span class="drop-icon">↑</span>
+                <strong id="selectedFile">Choose a dataset</strong>
+                <small>CSV or XLSX format</small>
+                <span class="drop-helper">Select a file from your device</span>
+
+              </div>
+
+              <button id="uploadBtn" class="btn btn-primary" type="submit">
+                Analyze dataset <span>→</span>
+              </button>
+
+            </form>
+
+            <div
+              id="upload-status"
+              class="upload-status muted"
+              role="status"
+              aria-live="polite"
+            ></div>
+
+          </article>
+
+
+          <div id="datasetResults" class="dataset-results hidden">
+
+            <div class="section-heading">
+              <div>
+                <div class="eyebrow">AUDIT RESULTS</div>
+                <h2 id="datasetTitle">Dataset audit report</h2>
+                <p class="muted">
+                  A summary of the current dataset's quality and structure.
+                </p>
+              </div>
+            </div>
+
+
+            <div class="stats-grid data-stats">
+
+              <article class="stat-card">
+                <div class="stat-top">
+                  <span class="stat-icon icon-teal">✓</span>
+                  <span class="stat-kicker">QUALITY</span>
+                </div>
+                <div id="dataHealthScore" class="stat-value">—</div>
+                <div class="stat-label">Data health score</div>
+              </article>
+
+              <article class="stat-card">
+                <div class="stat-top">
+                  <span class="stat-icon icon-violet">!</span>
+                  <span class="stat-kicker">COMPLETENESS</span>
+                </div>
+                <div id="dataMissing" class="stat-value">—</div>
+                <div class="stat-label">Missing values</div>
+              </article>
+
+              <article class="stat-card">
+                <div class="stat-top">
+                  <span class="stat-icon icon-blue">⟳</span>
+                  <span class="stat-kicker">CONSISTENCY</span>
+                </div>
+                <div id="dataDuplicates" class="stat-value">—</div>
+                <div class="stat-label">Duplicate rows</div>
+              </article>
+
+              <article class="stat-card">
+                <div class="stat-top">
+                  <span class="stat-icon icon-teal">▤</span>
+                  <span class="stat-kicker">STRUCTURE</span>
+                </div>
+                <div id="dataRows" class="stat-value">—</div>
+                <div class="stat-label">Total rows</div>
+              </article>
+
+            </div>
+
+
+            <div class="content-grid data-results-grid">
+
+              <article class="panel">
+
+                <div class="panel-heading">
+                  <div>
+                    <h3>Missing values</h3>
+                    <p class="muted">Review incomplete columns.</p>
+                  </div>
+                  <span class="panel-heading-mark">!</span>
+                </div>
+
+                <div id="missingValuesBreakdown" class="insight-list"></div>
+
+              </article>
+
+
+              <article class="panel">
+
+                <div class="panel-heading">
+                  <div>
+                    <h3>Chart recommendations</h3>
+                    <p class="muted">Suggested ways to visualize your data.</p>
+                  </div>
+                  <span class="panel-heading-mark">▦</span>
+                </div>
+
+                <div id="chartSuggestionsList" class="insight-list"></div>
+
+              </article>
+
+
+              <article class="panel">
+
+                <div class="panel-heading">
+                  <div>
+                    <h3>Recovery roadmap</h3>
+                    <p class="muted">Recommended data-quality improvements.</p>
+                  </div>
+                  <span class="panel-heading-mark">↗</span>
+                </div>
+
+                <div id="recoveryRoadmapList" class="insight-list"></div>
+
+              </article>
+
+
+              <article class="panel">
+
+                <div class="panel-heading">
+                  <div>
+                    <h3>Strategic recommendations</h3>
+                    <p class="muted">Suggested next steps for your analysis.</p>
+                  </div>
+                  <span class="panel-heading-mark">✳</span>
+                </div>
+
+                <div id="recommendationsList" class="insight-list"></div>
+
+              </article>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- =================================================
+             AI COPILOT
+             ================================================= -->
+
+        <section id="view-copilot" class="page-view hidden">
+
+          <div class="page-heading">
+            <div>
+              <div class="eyebrow">
+                <span class="live-dot"></span>
+                AI THINKING PARTNER
+              </div>
+
+              <h1>
+                AI <span class="text-gradient">Copilot.</span>
+              </h1>
+
+              <p class="muted">
+                Ask business questions, explore ideas, and investigate
+                data patterns using your configured AI assistant.
+              </p>
+            </div>
+          </div>
+
+
+          <div class="copilot-intro">
+            <div class="copilot-orb" aria-hidden="true">✳</div>
+
+            <div>
+              <strong>Nexora Copilot</strong>
+              <p>
+                Describe your question clearly to receive a more useful response.
+              </p>
+            </div>
+          </div>
+
+
+          <div class="panel chat-panel">
+
+            <div
+              id="chatMessages"
+              class="chat-messages"
+              role="log"
+              aria-live="polite"
+              aria-relevant="additions"
+            >
+
+              <div class="message assistant-message">
+
+                <div class="message-avatar">N</div>
+
+                <div class="message-content">
+                  <div class="message-author">NEXORA COPILOT</div>
+
+                  <div>
+                    Hello! I can help you explore business questions,
+                    understand data patterns, and reason through
+                    strategic decisions. What would you like to investigate?
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <form id="chatForm" class="chat-composer">
+
+              <textarea
+                id="llm-prompt"
+                rows="2"
+                placeholder="Ask a question or explore a business scenario..."
+                aria-label="Message to Nexora Copilot"
+                required
+              ></textarea>
+
+              <button
+                id="ask-llm-btn"
+                class="send-btn"
+                type="submit"
+                aria-label="Send message"
+              >↑</button>
+
+            </form>
+
+            <p id="chatError" class="error-text" role="status" aria-live="polite"></p>
+            <div class="chat-actions"><button id="clearChatBtn" class="btn btn-quiet" type="button">New conversation</button></div>
+            <div class="composer-footnote">
+              AI-generated responses may need verification before important decisions.
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- =================================================
+             ACTIVITY HISTORY
+             ================================================= -->
+
+        <section id="view-history" class="page-view hidden">
+
+          <div class="page-heading">
+            <div>
+              <div class="eyebrow">WORKSPACE RECORDS</div>
+
+              <h1>
+                Activity <span class="text-gradient">History.</span>
+              </h1>
+
+              <p class="muted">
+                Review activity recorded by your application.
+              </p>
+            </div>
+          </div>
+
+
+          <article class="panel history-panel">
+
+            <div class="panel-heading">
+              <div>
+                <h3>Recent activity</h3>
+                <p class="muted">
+                  Reports, analyses, and other recorded workspace events.
+                </p>
+              </div>
+
+              <span class="panel-heading-mark">◷</span>
+            </div>
+
+            <div id="historyList" class="history-list">
+
+              <div class="empty-state">
+                <div class="empty-illustration" aria-hidden="true">
+                  <span>◷</span>
+                </div>
+
+                <h3>Your workspace history will appear here</h3>
+
+                <p>
+                  Once supported activities are recorded by the application,
+                  their history can be displayed in this section.
+                </p>
+              </div>
+
+            </div>
+
+          </article>
+
+        </section>
+
+      </div>
+
+    </main>
+
+  </div>
+
+
+  <!-- Existing application JavaScript -->
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+
+  <!-- Small UI enhancements that do not replace app.js -->
+  <script>
+    (() => {
+      "use strict";
+
+      // Current year
+      const year = document.getElementById("authYear");
+      if (year) year.textContent = new Date().getFullYear();
+
+      // Password visibility
+      const password = document.getElementById("authPassword");
+      const toggle = document.getElementById("passwordToggle");
+
+      toggle?.addEventListener("click", () => {
+        if (!password) return;
+
+        const showPassword = password.type === "password";
+
+        password.type = showPassword ? "text" : "password";
+        toggle.textContent = showPassword ? "Hide" : "Show";
+        toggle.setAttribute("aria-pressed", String(showPassword));
+        toggle.setAttribute(
+          "aria-label",
+          showPassword ? "Hide password" : "Show password"
+        );
+      });
+
+      // Password feedback while registering.
+      // The existing auth code controls when the name field is visible.
+      const nameField = document.getElementById("nameField");
+      const strength = document.getElementById("passwordStrength");
+
+      password?.addEventListener("input", () => {
+        if (!strength || !password) return;
+
+        // Only display the strength indicator during registration.
+        if (!nameField || nameField.classList.contains("hidden")) {
+          strength.classList.add("hidden");
+          return;
+        }
+
+        const value = password.value;
+        let score = 0;
+
+        if (value.length >= 12) score++;
+        if (/[a-z]/.test(value) && /[A-Z]/.test(value)) score++;
+        if (/\d/.test(value)) score++;
+        if (/[^a-zA-Z0-9]/.test(value)) score++;
+
+        let label = "Use 12+ characters and a mix of character types.";
+        let level = "weak";
+
+        if (value.length === 0) {
+          strength.classList.add("hidden");
+          strength.textContent = "";
+          strength.removeAttribute("data-level");
+          return;
+        }
+
+        if (score <= 1) {
+          label = "Password strength: weak";
+          level = "weak";
+        } else if (score <= 2) {
+          label = "Password strength: moderate";
+          level = "medium";
+        } else {
+          label = "Password strength: strong";
+          level = "strong";
+        }
+
+        strength.textContent = label;
+        strength.dataset.level = level;
+        strength.classList.remove("hidden");
+      });
+
+      // Display selected filenames without interfering with upload logic.
+      function bindFileName(inputId, labelId) {
+        const input = document.getElementById(inputId);
+        const label = document.getElementById(labelId);
+
+        if (!input || !label) return;
+
+        input.addEventListener("change", () => {
+          const file = input.files?.[0];
+
+          if (file) {
+            label.textContent = file.name;
+            label.title = file.name;
+          }
+        });
+      }
+
+      bindFileName("generatorFile", "generatorFileName");
+      bindFileName("file-input", "selectedFile");
+
+      // Mobile navigation is managed by app.js to avoid duplicate click handlers.
+
+      // Submit the Copilot form when Enter is pressed without Shift.
+      // The normal form submission is still used for the send button.
+      const prompt = document.getElementById("llm-prompt");
+
+      prompt?.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" && !event.shiftKey) {
+          event.preventDefault();
+
+          const form = document.getElementById("chatForm");
+
+          if (form && prompt.value.trim()) {
+            if (typeof form.requestSubmit === "function") {
+              form.requestSubmit();
+            } else {
+              form.dispatchEvent(
+                new Event("submit", { bubbles: true, cancelable: true })
+              );
+            }
+          }
+        }
+      });
+
+    })();
+  </script>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
